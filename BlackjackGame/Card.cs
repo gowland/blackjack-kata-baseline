@@ -1,6 +1,6 @@
 ﻿namespace BlackjackGame;
 
-public class Card
+public class Card : IEquatable<Card>
 {
     private readonly Suit _suit;
     private readonly Rank _rank;
@@ -36,21 +36,23 @@ public class Card
         return $"Card {{ suit={_suit}, rank={_rank} }}";
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
+        if (ReferenceEquals(null, obj)) return false;
         if (ReferenceEquals(this, obj)) return true;
-        if (obj == null || GetType() != obj.GetType()) return false;
-
-        Card card = (Card)obj;
-
-        if (!_suit.Equals(card._suit)) return false;
-        return _rank.Equals(card._rank);
+        if (obj.GetType() != GetType()) return false;
+        return Equals((Card)obj);
     }
 
     public override int GetHashCode()
     {
-        int result = _suit.GetHashCode();
-        result = 31 * result + _rank.GetHashCode();
-        return result;
+        return HashCode.Combine((int)_suit, (int)_rank);
+    }
+
+    public bool Equals(Card? other)
+    {
+        if (ReferenceEquals(null, other)) return false;
+        if (ReferenceEquals(this, other)) return true;
+        return _suit == other._suit && _rank == other._rank;
     }
 }
