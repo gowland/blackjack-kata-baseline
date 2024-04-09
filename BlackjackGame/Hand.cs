@@ -39,28 +39,10 @@ public class Hand
         return Value() <= 16;
     }
 
-    public void Display()
+    public IEnumerable<(string, ConsoleColor)> Display()
     {
-        foreach (var card in _cards)
-        {
-            var displayInfo = card.Display();
-            WriteColoredString(displayInfo.Item1, displayInfo.Item2);        
-        }
+        return _cards.Select(card => card.Display());
     }
-    
-    private void WriteColoredString(string text, ConsoleColor color)
-    {
-        // Store the original color so we can reset it
-        ConsoleColor originalColor = Console.ForegroundColor;
-
-        // Set the color and write the text
-        Console.ForegroundColor = color;
-        Console.WriteLine(text);
-
-        // Reset the color
-        Console.ForegroundColor = originalColor;
-    }
-
 
     public void DrawFrom(Deck deck)
     {

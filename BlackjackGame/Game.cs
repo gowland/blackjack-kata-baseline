@@ -49,7 +49,7 @@ public class Game
         _deck = new Deck();
     }
 
-    public void InitialDeal()
+    private void InitialDeal()
     {
         DealRoundOfCards();
         DealRoundOfCards();
@@ -160,8 +160,16 @@ public class Game
 
         Console.WriteLine();
         Console.WriteLine("Player has: ");
-        _playerHand.Display();
+        WriteDisplayInfos(_playerHand.Display());
         Console.WriteLine(" (" + _playerHand.DisplayValue() + ")");
+    }
+    
+    private void WriteDisplayInfos(IEnumerable<(string, ConsoleColor)> displayInfos)
+    {
+        foreach (var displayInfo in displayInfos)
+        {
+            WriteColoredString(displayInfo);        
+        }
     }
     
     private void WriteColoredString((string Text, ConsoleColor Color) displayInfo)
@@ -181,12 +189,12 @@ public class Game
     {
         Console.Clear();
         Console.WriteLine("Dealer has: ");
-        _dealerHand.Display();
+        WriteDisplayInfos(_dealerHand.Display());
         Console.WriteLine(" (" + _dealerHand.DisplayValue() + ")");
 
         Console.WriteLine();
         Console.WriteLine("Player has: ");
-        _playerHand.Display();
+        WriteDisplayInfos(_playerHand.Display());
         Console.WriteLine(" (" + _playerHand.DisplayValue() + ")");
     }
 }
