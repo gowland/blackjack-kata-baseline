@@ -112,12 +112,12 @@ public class Game
         while (!_playerHand.IsBusted())
         {
             DisplayGameState();
-            string playerChoice = InputFromPlayer().ToLower();
-            if (playerChoice.StartsWith("s"))
+            string? playerChoice = InputFromPlayer()?.ToLower();
+            if (playerChoice?.StartsWith("s") ?? false)
             {
                 break;
             }
-            if (playerChoice.StartsWith("h"))
+            if (playerChoice?.StartsWith("h") ?? false)
             {
                 _playerHand.DrawFrom(_deck);
                 if (_playerHand.IsBusted())
@@ -132,7 +132,7 @@ public class Game
         }
     }
 
-    private string InputFromPlayer()
+    private string? InputFromPlayer()
     {
         Console.WriteLine("[H]it or [S]tand?");
         return Console.ReadLine();

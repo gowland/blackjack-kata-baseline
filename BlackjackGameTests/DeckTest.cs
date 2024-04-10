@@ -24,8 +24,11 @@ class DeckTest
     {
         Deck deck = new Deck();
         Card card = deck.Draw();
-        Assert.IsNotNull(card);
-        Assert.IsTrue(card.RankValue() > 0);
+        Assert.Multiple(() =>
+        {
+            Assert.That(card, Is.Not.Null);
+            Assert.That(card.RankValue(), Is.GreaterThan(0));
+        });
     }
 
     [Test]
@@ -37,6 +40,6 @@ class DeckTest
         {
             drawnCards.Add(deck.Draw());
         }
-        Assert.That(drawnCards.Count, Is.EqualTo(52));
+        Assert.That(drawnCards, Has.Count.EqualTo(52));
     }
 }

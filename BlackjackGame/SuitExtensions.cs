@@ -4,33 +4,25 @@ public static class SuitExtensions
 {
     public static string Symbol(this Suit suit)
     {
-        switch (suit)
+        return suit switch
         {
-            case Suit.Hearts:
-                return "♥";
-            case Suit.Clubs:
-                return "♣";
-            case Suit.Diamonds:
-                return "♦";
-            case Suit.Spades:
-                return "♠";
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+            Suit.Hearts => "♥",
+            Suit.Clubs => "♣",
+            Suit.Diamonds => "♦",
+            Suit.Spades => "♠",
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
 
     public static bool IsRed(this Suit suit)
     {
-        switch (suit)
+        return suit switch
         {
-            case Suit.Hearts:
-            case Suit.Diamonds:
-                return true;
-            case Suit.Clubs:
-            case Suit.Spades:
-                return false;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+            Suit.Hearts => true,
+            Suit.Diamonds => true,
+            Suit.Clubs => false,
+            Suit.Spades => false,
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
 }

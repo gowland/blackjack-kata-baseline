@@ -7,8 +7,8 @@ public class Card : IEquatable<Card>
 
     public Card(Suit suit, Rank rank)
     {
-        this._suit = suit;
-        this._rank = rank;
+        _suit = suit;
+        _rank = rank;
     }
 
     public int RankValue()
@@ -20,11 +20,11 @@ public class Card : IEquatable<Card>
     {
         string[] lines = new string[7];
         lines[0] = "┌─────────┐";
-        lines[1] = String.Format("│{0}{1}       │", _rank.Display(), _rank == Rank.Ten ? "" : " ");
+        lines[1] = $"│{_rank.Display()}{(_rank == Rank.Ten ? "" : " ")}       │";
         lines[2] = "│         │";
-        lines[3] = String.Format("│    {0}    │", _suit.Symbol());
+        lines[3] = $"│    {_suit.Symbol()}    │";
         lines[4] = "│         │";
-        lines[5] = String.Format("│       {0}{1}│", _rank == Rank.Ten ? "" : " ", _rank.Display());
+        lines[5] = $"│       {(_rank == Rank.Ten ? "" : " ")}{_rank.Display()}│";
         lines[6] = "└─────────┘";
 
         ConsoleColor cardColor = _suit.IsRed() ? ConsoleColor.Red : ConsoleColor.Black;
