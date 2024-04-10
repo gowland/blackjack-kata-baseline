@@ -1,9 +1,5 @@
 This is a C# port of this repo: https://github.com/tedyoung/mycmt2-blackjack-baseline created by @tedyoung .
 
-# Make Your Blackjack Code More Testable
-
-This is the starter code base for part 2 of the "Refactoring to Testable Code" (aka "Make Code More Testable") class. Also known as "Refactoring to Hexagonal Architecture".
-
 ## Rules of Blackjack
 
 Players play against the Dealer, not each other. The goal of the game is to get a hand with a score as close to 21 without going over, as well as beating the score of the Dealer's hand. The score of the hand is the sum of the point values of its cards. If a Player's hand score is over 21, the Player loses ("busts").
