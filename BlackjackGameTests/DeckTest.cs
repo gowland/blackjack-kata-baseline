@@ -2,19 +2,19 @@ using BlackjackGame;
 
 namespace BlackjackGameTests;
 
-class DeckTest
+public class DeckTest
 {
     [Test]
     public void FullDeckHas52Cards()
     {
-        Deck deck = new Deck();
+        var deck = new Deck();
         Assert.That(deck.Size(), Is.EqualTo(52));
     }
 
     [Test]
     public void DrawCardFromDeckReducesDeckSizeByOne()
     {
-        Deck deck = new Deck();
+        var deck = new Deck();
         deck.Draw();
         Assert.That(deck.Size(), Is.EqualTo(51));
     }
@@ -22,8 +22,8 @@ class DeckTest
     [Test]
     public void DrawCardFromDeckReturnsValidCard()
     {
-        Deck deck = new Deck();
-        Card card = deck.Draw();
+        var deck = new Deck();
+        var card = deck.Draw();
         Assert.Multiple(() =>
         {
             Assert.That(card, Is.Not.Null);
@@ -34,8 +34,8 @@ class DeckTest
     [Test]
     public void DrawAllCardsResultsInSetOf52UniqueCards()
     {
-        Deck deck = new Deck();
-        HashSet<Card> drawnCards = new HashSet<Card>();
+        var deck = new Deck();
+        var drawnCards = new HashSet<Card>();
         for (int i = 1; i <= 52; i++)
         {
             drawnCards.Add(deck.Draw());

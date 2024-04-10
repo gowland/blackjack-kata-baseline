@@ -4,7 +4,7 @@ namespace BlackjackGameTests;
 
 public class HandValueAceTest
 {
-    private static readonly Suit DummySuit = Suit.Clubs;
+    private const Suit DummySuit = Suit.Clubs;
 
     [Test]
     public void HandWithOneAceAndOtherCardValuedLessThan10ThenAceIsValuedAt11()
@@ -29,7 +29,6 @@ public class HandValueAceTest
 
     private Hand CreateHand(params Rank[] ranks)
     {
-        List<Card> cards = ranks.Select(rank => new Card(DummySuit, rank)).ToList();
-        return new Hand(cards);
+        return new Hand(ranks.Select(rank => new Card(DummySuit, rank)).ToList());
     }
 }
